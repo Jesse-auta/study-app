@@ -6,16 +6,16 @@ from app.config import Config
 import os
 
 def create_app(config_class=Config):
-   app = Flask(__name__)
-   app.config.from_object(config_class)
+    app = Flask(__name__)
+    app.config.from_object(config_class)
 
-   # init extensions
-   db.init_app(app)
-   migrate.init_app(app, db)
-   cors.init_app(app)
+    # init extensions
+    db.init_app(app)
+    migrate.init_app(app, db)
+    cors.init_app(app)
 
-   # register blueprints (later)
-   from app.api import api_bp
-   app.register_blueprint(api_bp)
-
-   return app
+    # register blueprints
+    from app.api import api_bp
+    app.register_blueprint(api_bp)
+    # app.register_blueprint()
+    return app

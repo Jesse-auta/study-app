@@ -10,6 +10,8 @@ class Project(db.Model):
     title = db.Column(db.String(80), unique=True, nullable=False)
     description = db.Column(db.String(250), unique=True, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.now(timezone.utc))
+
+    notes = db.relationship("Note", back_populates="project", cascade="all, delete-orphan")
     
     def to_dict(self):
         """Convert model object into a dictionary for JSON responses."""

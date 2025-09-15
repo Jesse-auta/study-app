@@ -6,7 +6,7 @@ project_bp = Blueprint("projects", __name__)
 
 @project_bp.route("/api/projects", methods=["GET"])
 def get_projects():
-    projects = Project.query.all()   # fetch all projects from DB
+    projects = Project.query.all()
     return jsonify([p.to_dict() for p in projects])
 
 
