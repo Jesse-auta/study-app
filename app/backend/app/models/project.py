@@ -1,4 +1,3 @@
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timezone
 from app.extensions import db
 
@@ -10,8 +9,10 @@ class Project(db.Model):
     title = db.Column(db.String(80), unique=True, nullable=False)
     description = db.Column(db.String(250), unique=True, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.now(timezone.utc))
-
+    
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     notes = db.relationship("Note", back_populates="project", cascade="all, delete-orphan")
+    
     
     def to_dict(self):
         """Convert model object into a dictionary for JSON responses."""
@@ -22,3 +23,4 @@ class Project(db.Model):
             "created_at": self.created_at.isoformat() if self.created_at else None
         }
         
+

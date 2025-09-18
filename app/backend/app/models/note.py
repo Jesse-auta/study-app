@@ -11,8 +11,9 @@ class Note(db.Model):
     project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable= False)
     content = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now(timezone.utc))
-
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     project = db.relationship("Project", back_populates="notes")
+    
 
     def to_dict(self):
         return {
