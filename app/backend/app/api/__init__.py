@@ -8,7 +8,9 @@ api_bp = Blueprint("api", __name__)
 from .projects import project_bp
 from .notes import notes_bp
 from .users import users_bp
+from .timers import timers_bp
 
 api_bp.register_blueprint(project_bp)
 api_bp.register_blueprint(notes_bp)
 api_bp.register_blueprint(users_bp)
+api_bp.register_blueprint(timers_bp)
