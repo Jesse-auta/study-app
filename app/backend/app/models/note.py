@@ -14,6 +14,7 @@ class Note(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     project = db.relationship("Project", back_populates="notes")
     
+    
 
     def to_dict(self):
         return {

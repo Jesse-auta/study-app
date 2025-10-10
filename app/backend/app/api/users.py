@@ -26,7 +26,7 @@ def create_user():
     db.session.add(new_user)
     db.session.commit()
 
-    return jsonify(new_user.to_dict())
+    return jsonify(new_user.to_dict()), 201
 
 
 @users_bp.route("/api/users/<int:user_id>", methods=["GET"])

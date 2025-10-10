@@ -19,8 +19,8 @@ def create_projects():
         return jsonify({"Error": "title is required"})
     
     description = data.get("description")
-
-    project = Project(title=title, description=description)
+    user_id = data.get('user_id')
+    project = Project(title=title, description=description, user_id=user_id)
 
     db.session.add(project)
     db.session.commit()
