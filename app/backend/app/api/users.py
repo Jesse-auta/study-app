@@ -14,7 +14,7 @@ def get_users():
 def create_user():
     data = request.get_json()
     if not data or not data.get("username") or not data.get("password") or not data.get("email"):
-        return jsonify({"Error" : "Username, Password and Email are required"}), 201
+        return jsonify({"Error" : "Username, Password and Email are required"}), 401
     
     username = data["username"]
     email = data["email"]

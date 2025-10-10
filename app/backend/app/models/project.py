@@ -12,6 +12,8 @@ class Project(db.Model):
     
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     notes = db.relationship("Note", back_populates="project", cascade="all, delete-orphan")
+    resources = db.relationship("Resource", back_populates="project", cascade="all, delete-orphan")
+
     
     
     def to_dict(self):

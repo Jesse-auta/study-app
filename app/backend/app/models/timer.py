@@ -12,9 +12,15 @@ class Timer(db.Model):
     # Whether the timer is active or finished
     is_active = db.Column(db.Boolean, default=True)
 
-    def __init__(self, user_id, duration_seconds):
+    def __init__(self, user_id, project_id, duration_seconds):
         self.user_id = user_id
+        self.project_id = project_id
         self.duration_seconds = duration_seconds
         self.start_time = datetime.now(timezone.utc)
         self.end_time = self.start_time + timedelta(seconds=duration_seconds)
         self.is_active = True
+
+        if duration_seconds is not None:
+            self.end_time = self.start_time + timedelta(seconds=duration_seconds)
+        else:
+            self.end_time = None

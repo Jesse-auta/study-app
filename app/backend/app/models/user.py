@@ -15,6 +15,8 @@ class User(db.Model):
     #Relationships
     projects = db.relationship("Project", backref="user", lazy=True)
     notes = db.relationship("Note", backref="user", lazy=True)
+    resources = db.relationship("Resource", back_populates="user", cascade="all, delete-orphan")
+
 
 
     def set_password(self, password):
