@@ -11,6 +11,7 @@ def create_resource(project_id):
     data = request.get_json()
     title = data.get("title")
     url = data.get("url")
+    thumbnail_url = data.get("url")
     resource_type = data.get("resource_type", "video")
     user_id = data.get("user_id")  # uploader
 
@@ -22,6 +23,7 @@ def create_resource(project_id):
         user_id=user_id,
         title=title,
         url=url,
+        thumbnail_url=thumbnail_url,
         resource_type=resource_type
     )
 
@@ -34,6 +36,7 @@ def create_resource(project_id):
             "id": resource.id,
             "title": resource.title,
             "url": resource.url,
+            "thumbnail_url": resource.thumbnail_url,
             "type": resource.resource_type
         }
     }), 201
@@ -48,6 +51,7 @@ def list_resources(project_id):
             "id": r.id,
             "title": r.title,
             "url": r.url,
+            "thumbnail_url": r.thumbnail_url,
             "type": r.resource_type,
             "uploader": r.user.username if r.user else None
         }
@@ -62,6 +66,7 @@ def get_resource(resource_id):
         "id": resource.id,
         "title": resource.title,
         "url": resource.url,
+        "thumbnail_url": resource.thumbnail_url,
         "type": resource.resource_type,
         "project": resource.project.title,
         "uploader": resource.user.username if resource.user else None
