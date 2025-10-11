@@ -7,16 +7,37 @@ from app.utils.youtube import generate_youtube_thumbnail
 
 resources_bp = Blueprint("resources", __name__)
 
+
 @resources_bp.route("/projects/<int:project_id>/resources", methods=["POST"])
 def create_resource(project_id):
     data = request.get_json()
-    title = data.get("title")
-    url = data.get("url")
-    thumbnail_url = generate_youtube_thumbnail(url)
-    resource_type = data.get("resource_type", "video")
-    user_id = data.get("user_id")  # uploader
+    errors = []
 
-    # Check project exists
+    if not data.get('title'):
+        errors.append("Title is required.")
+    elif len(data['title']) < 3:
+        errors.append("Title must be at least 3 characters long.")
+
+    if not data.get('url'):
+        errors.append("URL is required.")
+
+    if not data.get('user_id'):
+        errors.append("User ID is required.")
+
+    if errors:
+        return jsonify({"errors": errors}), 400
+
+    try:
+        user_id = int(data.get("user_id"))
+    except ValueError:
+        return jsonify({'error': 'user_id must be an integer'}), 400
+
+    
+    url = data.get("url")
+    title = data.get("title")
+    thumbnail_url = generate_youtube_thumbnail(url)  # Generate thumbnail
+    resource_type = data.get("resource_type", "video")
+
     project = Project.query.get_or_404(project_id)
 
     resource = Resource(
@@ -41,6 +62,7 @@ def create_resource(project_id):
             "type": resource.resource_type
         }
     }), 201
+
 
 @resources_bp.route("/projects/<int:project_id>/resources", methods=["GET"])
 def list_resources(project_id):
