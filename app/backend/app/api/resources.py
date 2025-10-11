@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 from app.models.resource import Resource
 from app.models.project import Project
 from app.extensions import db
+from app.utils.youtube import generate_youtube_thumbnail
 
 
 resources_bp = Blueprint("resources", __name__)
@@ -11,7 +12,7 @@ def create_resource(project_id):
     data = request.get_json()
     title = data.get("title")
     url = data.get("url")
-    thumbnail_url = data.get("url")
+    thumbnail_url = generate_youtube_thumbnail(url)
     resource_type = data.get("resource_type", "video")
     user_id = data.get("user_id")  # uploader
 
