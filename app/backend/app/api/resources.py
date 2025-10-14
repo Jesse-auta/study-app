@@ -2,42 +2,46 @@ from flask import Blueprint, request, jsonify
 from app.models.resource import Resource
 from app.models.project import Project
 from app.extensions import db
-from app.utils.youtube import generate_youtube_thumbnail
+from app.utils.youtube import is_valid_youtube_url
+
 
 
 resources_bp = Blueprint("resources", __name__)
 
 
 @resources_bp.route("/projects/<int:project_id>/resources", methods=["POST"])
+@resources_bp.route("/projects/<int:project_id>/resources", methods=["POST"])
 def create_resource(project_id):
     data = request.get_json()
     errors = []
 
-    if not data.get('title'):
+    title = data.get("title")
+    url = data.get("url")
+    user_id = data.get("user_id")
+    resource_type = data.get("resource_type", "video")
+
+    # Basic field validations
+    if not title:
         errors.append("Title is required.")
-    elif len(data['title']) < 3:
+    elif len(title) < 3:
         errors.append("Title must be at least 3 characters long.")
 
-    if not data.get('url'):
+    if not url:
         errors.append("URL is required.")
+    else:
+        # YouTube validation
+        video_id = is_valid_youtube_url(url)
+        if not video_id:
+            errors.append("Invalid YouTube URL. Please provide a valid YouTube video link.")
 
-    if not data.get('user_id'):
+    if not user_id:
         errors.append("User ID is required.")
 
     if errors:
         return jsonify({"errors": errors}), 400
 
-    try:
-        user_id = int(data.get("user_id"))
-    except ValueError:
-        return jsonify({'error': 'user_id must be an integer'}), 400
-
-    
-    url = data.get("url")
-    title = data.get("title")
-    thumbnail_url = generate_youtube_thumbnail(url)  # Generate thumbnail
-    resource_type = data.get("resource_type", "video")
-
+    # Proceed if validation passes
+    thumbnail_url = f"https://img.youtube.com/vi/{video_id}/0.jpg"
     project = Project.query.get_or_404(project_id)
 
     resource = Resource(
