@@ -17,13 +17,15 @@ def get_notes(project_id):
 def add_note(project_id):
     project = Project.query.get_or_404(project_id)
     data = request.get_json()
+    user_id = data.get("user_id")
 
     if not data or "content" not in data:
         return jsonify({"error": "Content is required"}), 400
 
-    new_note = Note(content=data["content"], project=project)
+    new_note = Note(content=data["content"], project=project, user_id=user_id)
     db.session.add(new_note)
     db.session.commit()
+    print(new_note)
 
     return jsonify(new_note.to_dict()), 201
 

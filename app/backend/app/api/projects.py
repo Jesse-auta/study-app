@@ -45,7 +45,16 @@ def update_project(project_id):
 
 @project_bp.route("/api/projects/<int:project_id>", methods=["GET"])
 def get_project(project_id):
+
+
     project = Project.query.get(project_id)
+
+    if not project:
+        print("No projects available")
+        return jsonify({
+            "error": "No projects found"
+        }), 401
+    print(project)
 
     return jsonify(project.to_dict()), 201
 

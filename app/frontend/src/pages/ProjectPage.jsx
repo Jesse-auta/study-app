@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import NotesSection from "../components/NotesSection";
+import NotesPanel from "../components/NotesPanel";
 import VideoPlayer from "../components/VideoPlayer";
 
 const API_BASE = "http://localhost:5000/api";
 
-const ProjectPage = ({ projectId = 1, userId = 2 }) => {
+function ProjectPage({ projectId = 6, userId = 1 }) {
   const [project, setProject] = useState(null);
   const [resources, setResources] = useState([]);
   const [notes, setNotes] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // ✅ Fetch project, resources, and notes
+  //Fetch project, resources, and notes
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [projectRes, resourceRes, notesRes] = await Promise.all([
           axios.get(`${API_BASE}/projects/${projectId}`),
-          axios.get(`${API_BASE}/projects/${projectId}/resources`),
+          axios.get(`api/${API_BASE}/projects/${projectId}/resources`),
           axios.get(`${API_BASE}/projects/${projectId}/notes`),
         ]);
 
@@ -36,10 +36,10 @@ const ProjectPage = ({ projectId = 1, userId = 2 }) => {
     fetchData();
   }, [projectId]);
 
-  // ✅ Add note
+  //  Add note
   const handleAddNote = async (noteData) => {
     try {
-      const res = await axios.post(`${API_BASE}/notes`, noteData);
+      const res = await axios.post(`${API_BASE}/projects/${projectId}/notes`, noteData);
       setNotes([...notes, res.data]); // update UI instantly
     } catch (error) {
       console.error("Error adding note:", error);
@@ -57,17 +57,16 @@ const ProjectPage = ({ projectId = 1, userId = 2 }) => {
         <p>{project.description}</p>
       </header>
 
-      {/* 🎥 Video Section */}
-      {selectedVideo && (
+      
+      {/* {selectedVideo && (
         <VideoPlayer
           video={selectedVideo}
           resources={resources}
           onSelectVideo={setSelectedVideo}
         />
-      )}
+      )} */}
 
-      {/* 📝 Notes Section */}
-      <NotesSection
+      <NotesPanel
         projectId={projectId}
         userId={userId}
         notes={notes}
