@@ -50,28 +50,31 @@ function ProjectPage({ projectId = 6, userId = 1 }) {
   if (loading) return <p>Loading project...</p>;
   if (!project) return <p>Project not found.</p>;
 
-  return (
-    <div className="project-page-container">
-      <header className="project-header">
-        <h1>{project.title}</h1>
-        <p>{project.description}</p>
-      </header>
+    return (
+        <div className="project-page-container">
+            <header className="project-header">
+                <h1>{project.title}</h1>
+                <p>{project.description}</p>
+            </header>
+            <div className="project-body">
+                {selectedVideo && (
+                <VideoPlayer
+                videos={resources}
+                onSelectVideo={setSelectedVideo}
+                />
+            )}
+            <NotesPanel
+                projectId={projectId}
+                userId={userId}
+                notes={notes}
+                onAddNote={handleAddNote}
+            />
+            </div>
+            {/* <VideoPlayer videos={videos} /> */}
+            
 
-      {/* <VideoPlayer videos={videos} /> */}
-      {selectedVideo && (
-        <VideoPlayer
-          videos={resources}
-          onSelectVideo={setSelectedVideo}
-        />
-      )}
-
-      <NotesPanel
-        projectId={projectId}
-        userId={userId}
-        notes={notes}
-        onAddNote={handleAddNote}
-      />
-    </div>
+            
+        </div>
   );
 };
 
