@@ -18,7 +18,7 @@ function ProjectPage({ projectId = 6, userId = 1 }) {
       try {
         const [projectRes, resourceRes, notesRes] = await Promise.all([
           axios.get(`${API_BASE}/projects/${projectId}`),
-          axios.get(`api/${API_BASE}/projects/${projectId}/resources`),
+          axios.get(`${API_BASE.replace("api", "")}/projects/${projectId}/resources`),
           axios.get(`${API_BASE}/projects/${projectId}/notes`),
         ]);
 
@@ -26,6 +26,7 @@ function ProjectPage({ projectId = 6, userId = 1 }) {
         setResources(resourceRes.data);
         setNotes(notesRes.data);
         setSelectedVideo(resourceRes.data[0]); // auto-select first video
+        console.log("data",resourceRes.data)
       } catch (error) {
         console.error("Error fetching project data:", error);
       } finally {
@@ -51,20 +52,18 @@ function ProjectPage({ projectId = 6, userId = 1 }) {
 
   return (
     <div className="project-page-container">
-      {/* 🏗 Header */}
       <header className="project-header">
         <h1>{project.title}</h1>
         <p>{project.description}</p>
       </header>
 
-      
-      {/* {selectedVideo && (
+      {/* <VideoPlayer videos={videos} /> */}
+      {selectedVideo && (
         <VideoPlayer
-          video={selectedVideo}
-          resources={resources}
+          videos={resources}
           onSelectVideo={setSelectedVideo}
         />
-      )} */}
+      )}
 
       <NotesPanel
         projectId={projectId}
