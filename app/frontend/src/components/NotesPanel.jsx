@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AddNoteModal from "../components/AddNoteModal";
 
 const NotesPanel = ({ projectId, userId, notes, onAddNote }) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
 
   return (
     <div className="notes-section">
@@ -25,7 +25,7 @@ const NotesPanel = ({ projectId, userId, notes, onAddNote }) => {
           onClose={() => setShowModal(false)}
           onSave={(data) => {
             onAddNote(data);
-            setShowModal(false);
+            // setShowModal(false);
           }}
         />
       )}

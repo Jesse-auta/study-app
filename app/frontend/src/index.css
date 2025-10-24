@@ -10,6 +10,24 @@
   padding-left: 30px;
   padding-right: 30px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgb(242, 242, 242);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    all: unset;
+    background-color:#0c5fe4;
+    padding: 6px 8px;
+    border-radius: 8px;
+    color: white
+}
+
+.notes-section {
+    margin-top: 1rem
 }
  /* 
 .project-header {
@@ -74,6 +92,29 @@
     width: 4px
 }
 
+.note-modal {
+    min-width: 400px;
+    min-height: 400px;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: aliceblue;
+    border: none;
+
+}
+.note-modal:active {
+    border: none
+}
+
+.video-player {
+  margin-top: 1rem
+}
+
+iframe {
+    border-radius: 16px;
+    min-width: 700px;
+    min-height: 400px
+}
+
 .notes-section {
   
   /* border-radius: 15px;
@@ -85,12 +126,21 @@
   list-style: none; */
   width: 500px;
   padding: 16px;
+  
+}
+.notes-header {
+    display: flex;
+    justify-content: space-between;
 }
 
 .project-body {
     display: flex;
-    gap: 60px;
     justify-content: center;
+}
+
+.notes-list {
+    padding-top: 1rem;
+    list-style: none;
 }
 
 

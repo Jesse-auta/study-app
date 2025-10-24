@@ -67,7 +67,6 @@ function ProjectPage({ userId = 1 }) {
                     onSelectVideo={setSelectedVideo}
                     />
                 )}
-                <div className="divider"></div>
                 <NotesPanel
                     projectId={projectId}
                     userId={userId}
