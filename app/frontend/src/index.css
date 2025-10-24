@@ -16,19 +16,25 @@
 .modal-actions {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 8px
 }
 
 button {
     all: unset;
     background-color:#0c5fe4;
     padding: 6px 8px;
-    border-radius: 8px;
-    color: white
+    border-radius: 14px;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
+.add-button {
+    background-color: rgb(213, 227, 240);
+    color: #0c5fe4;
+    font-weight: 500;
 }
 
-.notes-section {
-    margin-top: 1rem
-}
  /* 
 .project-header {
   text-align: center;
@@ -97,12 +103,9 @@ button {
     min-height: 400px;
     padding: 8px;
     border-radius: 8px;
-    background-color: aliceblue;
+    background-color: rgb(213, 227, 240);
     border: none;
 
-}
-.note-modal:active {
-    border: none
 }
 
 .video-player {
@@ -141,7 +144,18 @@ iframe {
 .notes-list {
     padding-top: 1rem;
     list-style: none;
+    margin-bottom: 20px;
 }
+
+hr {
+    margin-bottom: 10px;
+}
+
+.project-header {
+    margin-bottom: 10px
+}
+
+
 
 
 /* @media (max-width: 1024px) {

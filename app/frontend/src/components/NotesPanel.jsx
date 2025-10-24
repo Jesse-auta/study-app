@@ -9,7 +9,7 @@ const NotesPanel = ({ projectId, userId, notes, onAddNote }) => {
         
       <div className="notes-header">
         <h2>Notes</h2>
-        <button onClick={() => setShowModal(true)}>+ Add Note</button>
+        <button className="add-button" onClick={() => setShowModal(true)}>+ Add Note</button>
       </div>
 
       <ul className="notes-list">
@@ -17,6 +17,7 @@ const NotesPanel = ({ projectId, userId, notes, onAddNote }) => {
           <li key={note.id}>{note.content}</li>
         ))}
       </ul>
+      <hr />
 
       {showModal && (
         <AddNoteModal
