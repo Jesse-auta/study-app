@@ -6,6 +6,7 @@ const NotesPanel = ({ projectId, userId, notes, onAddNote }) => {
 
   return (
     <div className="notes-section">
+        
       <div className="notes-header">
         <h2>Notes</h2>
         <button onClick={() => setShowModal(true)}>+ Add Note</button>

@@ -23,8 +23,8 @@ const VideoPlayer = ({ videos }) => {
     <div className="video-player">
       <h3>{currentVideo.title}</h3>
       <iframe
-        width="100%"
-        height="400"
+        width="660px"
+        height="400px"
         src={getEmbedUrl(currentVideo.url)}
         title={currentVideo.title}
         frameBorder="0"

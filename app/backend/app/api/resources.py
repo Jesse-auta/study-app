@@ -10,7 +10,6 @@ resources_bp = Blueprint("resources", __name__)
 
 
 @resources_bp.route("/projects/<int:project_id>/resources", methods=["POST"])
-@resources_bp.route("/projects/<int:project_id>/resources", methods=["POST"])
 def create_resource(project_id):
     data = request.get_json()
     errors = []

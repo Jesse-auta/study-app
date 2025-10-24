@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { fetchProjects, createProject } from "../api/projectAPI";
 import ProjectModal from "../components/ProjectModal";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const [projects, setProjects] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadProjects() {
@@ -19,6 +22,10 @@ function HomePage() {
     }
     loadProjects();
   }, []);
+
+  const handleViewProject = (projectId) => {
+    navigate(`/project/${projectId}`)
+  }
 
   const handleCreateProject = async (formData) => {
     try {
@@ -47,6 +54,7 @@ function HomePage() {
           <div key={project.id} style={styles.card}>
             <h3>{project.title}</h3>
             <p>{project.description}</p>
+            <button onClick={() => handleViewProject(project.id)}>Open Project</button>
           </div>
         ))}
       </div>

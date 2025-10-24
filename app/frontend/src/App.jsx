@@ -12,8 +12,9 @@ function App() {
     <Router>
       <Routes>
         {/* Pass the openModal function down so HomePage can trigger it */}
-        {/* <Route path="/" element={<HomePage/>} /> */}
-        <Route path="/" element={<ProjectPage/>} />
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/project/:id" element={<ProjectPage />} />
+        {/* <Route path="/" element={<ProjectPage/>} /> */}
         
       </Routes>
     </Router>
