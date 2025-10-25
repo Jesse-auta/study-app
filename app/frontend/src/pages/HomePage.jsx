@@ -54,7 +54,7 @@ function HomePage() {
           <div key={project.id} style={styles.card}>
             <h3>{project.title}</h3>
             <p>{project.description}</p>
-            <button onClick={() => handleViewProject(project.id)}>Open Project</button>
+            <button style={styles.openBtn} onClick={() => handleViewProject(project.id)}>Open Project</button>
           </div>
         ))}
       </div>
@@ -78,6 +78,10 @@ const styles = {
         justifyContent: "space-between",
         alignItems: "center",
     },
+    openBtn: {
+        marginTop: "40px"
+    },
+
     newBtn: {
         padding: "8px 16px",
         background: "#007bff",
@@ -85,6 +89,7 @@ const styles = {
         color: "white",
         borderRadius: "8px",
         cursor: "pointer",
+        
     },
     list: {
         marginTop: "2rem",

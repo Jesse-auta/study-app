@@ -24,7 +24,7 @@ button {
     all: unset;
     background-color:#0c5fe4;
     padding: 6px 8px;
-    border-radius: 14px;
+    border-radius: 16px;
     color: white;
     min-width: 50px;
     text-align: center;
@@ -99,6 +99,7 @@ button {
 }
 
 .note-modal {
+    all: unset;
     min-width: 400px;
     min-height: 400px;
     padding: 8px;
@@ -129,12 +130,19 @@ iframe {
   list-style: none; */
   width: 500px;
   padding: 16px;
-  
+  background-color: white;
+  border-radius: 8px;
+  overflow-y: scroll;
 }
 .notes-header {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 16px;
 }
+
+.video-thumbnails img{
+    height: 70px;
+}   
 
 .project-body {
     display: flex;

@@ -39,6 +39,7 @@ const VideoPlayer = ({ videos }) => {
               cursor: "pointer",
               margin: "10px",
               border: currentVideo.id === vid.id ? "2px solid blue" : "none",
+              
             }}
             onClick={() => setCurrentVideo(vid)}
           />
