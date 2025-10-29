@@ -3,20 +3,21 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProjectModal from "./components/ProjectModal";
 import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
-
+import Navbar from "./components/Navbar";
 
 function App() {
     
     
   return (
     <Router>
-      <Routes>
-        {/* Pass the openModal function down so HomePage can trigger it */}
-        <Route path="/" element={<HomePage/>} />
-        <Route path="/project/:id" element={<ProjectPage />} />
-        {/* <Route path="/" element={<ProjectPage/>} /> */}
-        
-      </Routes>
+        <Navbar></Navbar>
+        <Routes>
+            {/* Pass the openModal function down so HomePage can trigger it */}
+            <Route path="/" element={<HomePage/>} />
+            <Route path="/project/:id" element={<ProjectPage />} />
+            {/* <Route path="/" element={<ProjectPage/>} /> */}
+            
+        </Routes>
     </Router>
   );
 

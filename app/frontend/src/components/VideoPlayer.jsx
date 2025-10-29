@@ -32,13 +32,13 @@ const VideoPlayer = ({ videos }) => {
         {videos.map((vid) => (
           <img
             key={vid.id}
-            src={vid.thumbnail}
+            src={vid.thumbnail_url}
             alt={vid.title}
             style={{
-              width: "120px",
+                borderRadius: "8px",
               cursor: "pointer",
               margin: "10px",
-              border: currentVideo.id === vid.id ? "2px solid blue" : "none",
+              border: currentVideo.id === vid.id ? "3px solid blue" : "none",
               
             }}
             onClick={() => setCurrentVideo(vid)}

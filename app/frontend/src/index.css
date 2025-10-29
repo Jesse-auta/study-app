@@ -92,11 +92,7 @@ button {
   font-size: 1.2rem;
 } */
 
-.divider {
-    height: 400px;
-    color: black;
-    width: 4px
-}
+
 
 .note-modal {
     all: unset;
