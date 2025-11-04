@@ -57,7 +57,7 @@ function ProjectPage({ userId = 1 }) {
                 
                 <header className="project-header">
                     <h1>{project.title}</h1>
-                    <p>{project.description}</p>
+                    {/* <p>{project.description}</p> */}
                 </header>
                 <hr />
                 <div className="project-body">

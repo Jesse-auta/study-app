@@ -21,13 +21,19 @@ const VideoPlayer = ({ videos }) => {
 
   return (
     <div className="video-player">
-      <h3>{currentVideo.title}</h3>
-      <iframe
-        src={getEmbedUrl(currentVideo.url)}
-        title={currentVideo.title}
-        frameBorder="0"
-        allowFullScreen
-      />
+        {currentVideo && (
+            <>
+                <h3>{currentVideo.title}</h3>
+                <iframe
+                    src={getEmbedUrl(currentVideo.url)}
+                    title={currentVideo.title}
+                    frameBorder="0"
+                    allowFullScreen
+                />
+            </>
+            
+        )}
+      
       <div className="video-thumbnails">
         {videos.map((vid) => (
           <img

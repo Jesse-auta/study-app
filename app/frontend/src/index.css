@@ -4,13 +4,17 @@
     padding: 0;
  }
 
+h1 {
+    font-size: 2rem;
+}
+
 .project-page-container {
-  min-height: 100vh;
-  padding: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(242, 242, 242);
+    min-height: 100vh;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(242, 242, 242);
 }
 
 .modal-actions {
@@ -194,9 +198,9 @@ hr {
     justify-content: center;
     gap: 60px
 }
-
+/* 
 .notes-section {
     border: 1px solid rgb(160, 160, 160);
     margin: 0;
     min-width: 400px
-}
+} */

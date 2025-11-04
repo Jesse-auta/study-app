@@ -31,7 +31,7 @@ const NotesPanel = ({ projectId, userId, notes, onAddNote }) => {
             </div>
         )}
       
-      <hr />
+      {/* <hr /> */}
 
       {showModal && (
         <AddNoteModal
